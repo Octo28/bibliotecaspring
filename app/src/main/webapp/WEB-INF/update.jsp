@@ -4,13 +4,22 @@
     <head>
         <meta charset="UTF-8" />
         <title>Atualizar Livro</title>
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
-        <h1>Atualizar Livro</h1>
-        <form action="/update" method="post">
-            <input type="hidden" name="id" value="${livro.id}" />
-            <input type="text" name="titulo" value="${livro.titulo}" />
-            <button type="submit">Salvar</button>
-        </form>
+        <div class="container">
+            <h1>Atualizar Livro</h1>
+            <a href="/livro" class="btn btn-primary">Voltar</a>
+            <form action="/update" method="post">
+                <input type="hidden" name="id" value="${livro.id}" />
+                <div class="form-group">
+                    <label for="titulo">TíTulo</label>
+                    <input type="text" name="titulo" class="form-control" value="${livro.titulo}" />
+                </div>
+                <br />
+                <button type="submit" class="btn btn-success">Salvar</button>
+            </form>
+        </div>
     </body>
 </html>
+
