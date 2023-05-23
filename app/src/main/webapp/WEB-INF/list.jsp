@@ -15,12 +15,14 @@
                 <tr>
                     <th>Id</th>
                     <th>Título</th>
+                    <th>ISBN</th>
                     <th>&nbsp;</th>
                 </tr>
                 <c:forEach var="item" items="${livros}">
                     <tr>
                         <td>${item.id}</td>
                         <td>${item.titulo}</td>
+                        <td>${item.isbn}</td>
                         <td>
                             <a href="/update?id=${item.id}" class="btn btn-warning">Editar</a>
                             <a href="/delete?id=${item.id}" class="btn btn-danger">Excluir</a>

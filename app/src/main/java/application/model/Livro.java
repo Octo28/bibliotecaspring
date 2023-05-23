@@ -13,6 +13,7 @@ public class Livro {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     private String titulo;
+    private String isbn;
 
     public int getId() {
         return id;
@@ -26,4 +27,10 @@ public class Livro {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }   
+    public String getIsbn() {
+        return isbn;
+    }
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
 }
