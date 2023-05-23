@@ -9,8 +9,8 @@
     <body>
         <div class="container">
             <h1>Atualizar Livro</h1>
-            <a href="/livro" class="btn btn-primary">Voltar</a>
-            <form action="/update" method="post">
+            <a href="/livro/list" class="btn btn-primary">Voltar</a>
+            <form action="/livro/update" method="post">
                 <input type="hidden" name="id" value="${livro.id}" />
                 <div class="form-group">
                     <label for="titulo">TíTulo</label>

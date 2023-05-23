@@ -52,7 +52,7 @@ public class LivroController {
         }
 
         model.addAttribute("livro", livro.get());
-        return "update.jsp";
+        return "update";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
@@ -82,7 +82,7 @@ public class LivroController {
         }
 
         model.addAttribute("livro", livro.get());
-        return "delete.jsp";
+        return "delete";
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
