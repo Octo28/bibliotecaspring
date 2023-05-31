@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import application.model.Genero;
 import application.model.GeneroRepository;
 import application.model.Livro;
 import application.model.LivroRepository;
@@ -38,10 +39,15 @@ public class LivroController {
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public String insert(
         @RequestParam("titulo") String titulo,
-        @RequestParam("isbn") String isbn) {
+        @RequestParam("isbn") String isbn,
+        @RequestParam("genero") int id_genero) {
+        Optional<Genero> genero = generoRepo.findById(id_genero);
+
         Livro livro = new Livro();
         livro.setTitulo(titulo);
         livro.setIsbn(isbn);
+        livro.setGenero(genero.get());
+        
 
         livroRepo.save(livro);
 
@@ -56,6 +62,7 @@ public class LivroController {
             return "redirect:/livro/list";
         }
 
+        model.addAttribute("generos", generoRepo.findAll());
         model.addAttribute("livro", livro.get());
         return "update";
     }
@@ -64,7 +71,8 @@ public class LivroController {
     public String update(
         @RequestParam("titulo") String titulo,
         @RequestParam("id") int id,
-        @RequestParam("isbn") String isbn
+        @RequestParam("isbn") String isbn,
+        @RequestParam("genero") int id_genero
     ) {
         Optional<Livro> livro = livroRepo.findById(id);
         if(!livro.isPresent()) {
@@ -73,6 +81,7 @@ public class LivroController {
 
         livro.get().setTitulo(titulo);
         livro.get().setIsbn(isbn);
+        livro.get().setGenero(generoRepo.findById(id_genero).get());
 
         livroRepo.save(livro.get());
         return "redirect:/livro/list";
